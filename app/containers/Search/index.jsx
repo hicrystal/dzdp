@@ -1,16 +1,28 @@
 import React from 'react'
 import  PureRenderMixin from 'react-addons-pure-render-mixin'
+import SearchInput from "../../components/SearchInput";
+import SearchHeader from "../../components/SearchHeader/index";
+import SearchList from "./subpage/List";
 
 
 class  Search extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+
     }
     render(){
+        const params= this.props.params
         return(
-            <h1>hello Search</h1>
+          <div>
+              <SearchHeader keyword={params.keyword}/>
+              <SearchList keyword={params.keyword} category={params.category}/>
+          </div>
         )
+    }
+    componentDidMount(){
+        const params = this.props.params
+
     }
 }
 
