@@ -49,11 +49,12 @@ class Login extends React.Component {
     loginHandle(username){
         const acitons =this.props.userInfoActions
         let userinfo=this.props.userinfo
-        userinfo.usernmae=username
+        userinfo.username=username
         acitons.update(userinfo)
         //跳转链接
         const params=this.props.params
-        const router= this.props.router
+        const router= params.router
+        console.log(router)
         if(router){
             hashHistory.push(router)
         }else {

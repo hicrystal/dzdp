@@ -8,7 +8,7 @@ module.exports = {
             price: '150',
             distance: '120m',
             mumber: '389',
-            id: 335566
+            id: Math.random().toString().slice(2)
         },
         {
             img: 'http://localhost:8081/images/manman.jpg',
