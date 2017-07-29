@@ -20,7 +20,10 @@ class Header extends React.Component {
     }
 
     clickHandle(){
-        window.history.back()
+
+            window.history.back()
+
+
     }
 }
 
