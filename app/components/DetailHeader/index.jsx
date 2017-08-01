@@ -14,7 +14,11 @@ class DetailHeader extends React.Component {
     }
 
     render() {
+        const  userinfo= this.props.userinfo
+        console.log(userinfo.username)
+
         return (
+
             <div id="common-header">
                 <span className="back-icon" onClick={this.clickHandle.bind(this)}>
                     <i  className="icon-chevron-left"></i>

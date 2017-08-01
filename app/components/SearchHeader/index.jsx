@@ -26,7 +26,7 @@ class SearchHeader extends React.Component {
         )
     }
     clickHandle(){
-        window.history.back()
+        hashHistory.push('/')
     }
     enterHandle(value){
         console.log(this.props.keyword)

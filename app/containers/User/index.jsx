@@ -1,7 +1,11 @@
 import React from 'react'
 import  PureRenderMixin from 'react-addons-pure-render-mixin'
-
-
+import { bindActionCreators } from 'redux'
+import {  connect } from 'react-redux'
+import * as userInfoActionsFromOtherFile from '../../actions/userinfo'
+import { hashHistory } from 'react-router'
+import Header from "../../components/Header/index";
+import Userinfo from "../../components/Userinfo/index";
 class User extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -10,9 +14,33 @@ class User extends React.Component {
 
     render() {
         return (
-            <h1>hello User</h1>
+            <div>
+                <Header title="用户中心" backRouter="/"/>
+                <Userinfo />
+            </div>
         )
     }
+    componentDidMount(){
+            if(!this.props.userinfo.username){
+                hashHistory.push('/Login')
+            }
+    }
 }
-// 使用 require.ensure 异步加载，还不支持 ES6 的 export
-export default User
+
+// -------------------redux react 绑定--------------------
+
+function mapStateToProps(state) {
+    return {
+        userinfo: state.userinfo
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+    }
+}
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(User)

@@ -5,6 +5,7 @@ import DeatailInfo from './subpage/Info'
 import Comment from "./subpage/Comment";
 import Buy from "./subpage/buy";
 import DetailHeader from "../../components/DetailHeader";
+import Header from "../../components/Header/index";
 
 class  Detail extends React.Component {
     constructor(props, context) {
@@ -15,7 +16,7 @@ class  Detail extends React.Component {
         const id=this.props.params.id
         return(
             <div>
-               <DetailHeader title="商户详情" id={id}/>
+               <Header title="商户详情" backRouter="/search/all"/>
                 <DeatailInfo id={id}/>
                 <Buy id={id}/>
                 <Comment id={id}/>
