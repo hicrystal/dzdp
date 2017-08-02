@@ -10,7 +10,18 @@ class Userinfo extends React.Component {
 
     render() {
         return (
-            <h1>hello detail</h1>
+            <div className="userinfo-container">
+                <p>
+                    <i className="icon-user"></i>
+                    &nbsp;
+                    <span>{this.props.username}</span>
+                </p>
+                <p>
+                    <i className="icon-map-marker"></i>
+                    &nbsp;
+                    <span>{this.props.city}</span>
+                </p>
+            </div>
         )
     }
 }
