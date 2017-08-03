@@ -1,7 +1,7 @@
 import React from 'react'
 import  PureRenderMixin from 'react-addons-pure-render-mixin'
 import './style.less'
-import  {getOrderListData} from '../../../fetch/user/orderlist'
+import  {getOrderListData,postComment} from '../../../fetch/user/orderlist'
 import OrderListComponent from "../../../components/OrderList/index";
 class OrderList extends React.Component {
     constructor(props, context) {
@@ -17,7 +17,7 @@ class OrderList extends React.Component {
             <div className="order-list-container">
                 <h2>您的订单</h2>
                 {this.state.data.length
-                    ?<OrderListComponent data={this.state.data}/>
+                    ?<OrderListComponent data={this.state.data} submitComment={this.submitComment.bind(this)}/>
                     :<div></div>
                 }
             </div>
@@ -36,10 +36,24 @@ class OrderList extends React.Component {
         result.then(res=>{
             return res.json()
         }).then(json=>{
-            console.log(json)
+
             this.setState({
                 data:json
             })
+        })
+    }
+    //提交评价
+    submitComment(id,value,callback){
+        const  result= postComment(id,value)
+        console.log(result)
+        result.then(res=>{
+            return res.json()
+
+        }).then(json=>{
+
+            if(json.errno===0){
+                callback()
+            }
         })
     }
 }
